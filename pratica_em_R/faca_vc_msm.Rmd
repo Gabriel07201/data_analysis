@@ -1,0 +1,46 @@
+```{r}
+dados = read.csv("tempo.csv", sep = ";", na.strings = "", stringsAsFactors = T)
+head(dados)
+summary(dados)
+```
+```{r}
+dados[!complete.cases(dados), ]
+```
+```{r}
+summary(dados$Umidade)
+median(dados$Umidade, na.rm = T)
+dados[is.na(dados$Umidade),]$Umidade = median(dados$Umidade, na.rm = T)
+dados[!complete.cases(dados),]
+```
+```{r}
+summary(dados$Vento)
+dados[is.na(dados$Vento),]$Vento = "FALSO"
+```
+```{r}
+summary(dados$Vento)
+```
+```{r}
+summary(dados$Aparencia)
+dados[dados$Aparencia == "menos", ]$Aparencia = "sol"
+summary(dados$Aparencia)
+dados$Aparencia = factor(dados$Aparencia)
+summary(dados$Aparencia)
+```
+
+```{r}
+boxplot(dados$Temperatura)
+dados[dados$Temperatura >130 | dados$Temperatura < -130 ,]$Temperatura = median(dados$Temperatura)
+boxplot(dados$Temperatura)
+```
+
+```{r}
+boxplot(dados$Umidade)
+summary(dados$Umidade)
+dados[dados$Umidade >  100 | dados$Umidade <0 ,]$Umidade = median(dados$Umidade)
+boxplot(dados$Umidade)
+```
+
+```{r}
+summary(dados$Jogar)
+```
+

@@ -41,7 +41,6 @@ boxplot(dados$Salario, outline = F)
 ```{r}
 # encontrando valores incompletos (NA)
 dados[!complete.cases(dados),] # o ! serve como negação, o lado esquerdo da vírgula é para as linhas e o direito é para as colunas
-
 ```
 ```{r}
 summary(dados$Salario)
@@ -69,5 +68,37 @@ median(dados$Idade) # calculando mediana
 dados[dados$Idade<0 | dados$Idade>110,]$Idade = median(dados$Idade)
 dados[dados$Idade<0 | dados$Idade>110,]$Idade
 summary(dados$Idade)
+```
+```{r}
+# buscando dados duplicados
+x = dados[duplicated(dados$Id),]
+x
+dados = dados[-c(82), ] # apagando o dado repetido
+x = dados[duplicated(dados$Id),] # verificando se existe outro dado repetido
+x
+```
+```{r}
+# dados fora do dominio
+unique(dados$Estado)
+summary(dados$Estado)
+dados[!dados$Estado %in% c("RS", "SC", "PR"),]$Estado = "RS" # atribuindo a moda para os dados que estão fora do domínio
+summary(dados$Estado)
+dados$Estado = factor(dados$Estado) # tirando os valores que estão zerados
+summary(dados$Estado)
+```
+
+```{r}
+# calculando outliers
+desv = sd(dados$Salario, na.rm = T)
+dados[dados$Salario >=2 *desv ,]$Salario # usando desvio padrao
+# outra maneira de ver é usando gráficos
+boxplot(dados$Salario) # aqui podemos ver que ele mostra os valores que estão com desvio
+boxplot(dados$Salario, outline = F) # aqui podemos ver ele sem mostrar os desvios, caso o outline seja F
+x = boxplot(dados$Salario)$out # caso a linha de cima não tenha retirado o desvio padrão, aqui daria para visualizar os valores do desvio padrao
+x
+# atualizando esses valores para a mediana
+median(dados$Salario)
+dados[dados$Salario >=2 *desv ,]$Salario = median(dados$Salario) # aqui foi realizada a troca dos valores pela mediana
+dados[dados$Salario >=2 *desv ,]$Salario # verificando se os valores foram retirados  
 ```
 
