@@ -1,0 +1,57 @@
+```{r}
+library(lattice)
+```
+```{r}
+# essa biblioteca também é usada para a visualização de dados
+# boxplot
+bwplot(trees$Volume)
+bwplot(trees$Volume, main = "Árvores", xlab = "Volumes")
+```
+```{r}
+# histograma
+histogram(trees$Volume, main = "Árvores", xlab = "Volume", aspect = 1, type = "percent", nint = 20)
+```
+
+```{r}
+# histograma condicional
+chickwts
+histogram(chickwts$weight)
+aggregate(chickwts$weight, by=list(chickwts$feed), FUN=sum) # agregando os valores para ver a relação entre os dados
+histogram( ~weight | feed, data = chickwts) # gerando um histograma condicional
+```
+
+```{r}
+# gráfico de dispersão condicional
+CO2
+xyplot(CO2$conc ~ CO2$uptake) # gerando um gráfico de dispersão normal
+xyplot(CO2$conc ~ CO2$uptake | CO2$Type) # com a condição em relação ao tipo
+xyplot(CO2$conc ~ CO2$uptake | CO2$Treatment) # com outra relação
+```
+```{r}
+# dotplot é um outro tipo de gráfico
+esoph
+dotplot(esoph$alcgp ~ esoph$ncontrols, data = esoph)
+dotplot(esoph$alcgp ~ esoph$ncontrols | esoph$tobgp) # também é um gráfico condicional
+```
+```{r}
+# matriz de dispersão
+splom(~CO2[4:5] | CO2$Type, CO2) # usando uma condição de acordo com o tipo
+```
+
+```{r}
+# densidade condicional
+densityplot(~CO2$conc | CO2$Treatment, plot.points=F) # aqui é retirado alguns ponto que aparecem em baixo no gráfico
+
+```
+```{r}
+# gráfico 3D
+OrchardSprays
+cloud(decrease ~ rowpos * colpos, data = OrchardSprays)
+cloud(decrease ~ rowpos * colpos, groups = treatment, data = OrchardSprays) # define a cor do parâmetros
+```
+```{r}
+# level plot
+trees
+levelplot(Girth ~ Height * Volume, data = trees)
+```
+ 

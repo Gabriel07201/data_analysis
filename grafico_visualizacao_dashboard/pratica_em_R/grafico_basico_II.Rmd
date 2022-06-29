@@ -1,0 +1,39 @@
+```{r}
+# boxplot
+boxplot(trees$Volume, main = "Árvores", xlab = "Volume")
+boxplot(trees$Volume, main = "Árvores", xlab = "Volume", col = "blue", horizontal = T) # mudando a cor e colocando ele na horizontal
+boxplot(trees$Volume, main = "Árvores", xlab = "Volume", outline = F) # aqui foi retirado o outlier
+```
+
+```{r}
+boxplot(trees$Height, main = "Árvores", xlab = "Altura", col = "blue", notch = T) # aqui adiciona meio que um "corte" no gráfico
+boxplot.stats(trees$Height) # mostra os dados que seriam apresentados no gráfico
+boxplot.stats(trees$Height)$stats # aqui é para visualizar apenas único dado
+```
+
+```{r}
+boxplot(trees) # aqui é possível visualizar vários gráficos ao mesmo tempo
+```
+
+```{r}
+# outros gráficos
+# para gerar outros gráficos vai ser necessário adaptar os dados
+InsectSprays # aqui puxamos um dataframe
+spray = aggregate(. ~ spray, data = InsectSprays, sum) # aqui estamos colocando ele num formato que poderá ser usado, no final irá pegar cada tipo de spray e countar a quantidade de cada um
+spray
+```
+
+```{r}
+# gráfico de barras
+barplot(spray$count, col = gray.colors(6), xlab = "Spray", ylab = "Total", names.arg = spray$spray) # gerando um gráfico de barras com uma paleta de 6 cores cinzas, definindo os nomes do eixo x e y e também dizendo o valor que irá aparecer nas colunas
+box() # gera uma moldura ao redor do gráfico
+```   
+```{r}
+# gráfico de setor
+pie(spray$count, labels = spray$spray, main = "Spray", col = c(1:6)) # gera um gráfico de setores. no label é para visualizar o que é cada dado e o col é para gerar cores.
+legend("bottomright", legend = spray$spray, cex = 1, fill = c(1:6)) # gerando a legenda
+```
+```{r}
+
+```
+

@@ -1,0 +1,20 @@
+```{r}
+library(stargazer)
+```
+
+```{r}
+stargazer(iris) # formato latex
+```
+
+```{r}
+stargazer(iris, type = "html")
+```
+
+```{r}
+stargazer(iris, type = "text")
+```
+```{r}
+# salvando em disco
+stargazer(women, out = "women.text", summary = F) # aqui é para ele salvar sem fazer um sumário
+```
+
