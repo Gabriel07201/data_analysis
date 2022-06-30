@@ -1,0 +1,40 @@
+```{r}
+amostra = sample(c(0,1), 150, replace = T, prob = c(0.5,0.5)) # gerando 150 números com a opção de escolha entre 0 e 1, os dois tendo as mesma probabilidade
+amostra
+summary(as.factor(amostra))
+```
+
+```{r}
+amostra = sample(c(0,1), 150, replace = T, prob = c(0.7,0.3)) # gerando 150 números com a opção de escolha entre 0 e 1, com mais chances para o 0
+amostra
+summary(as.factor(amostra))
+```
+```{r}
+amostra = sample(c(1:1000), 150, replace = F) # gerando 150 amostras sem repetir nenhum valor
+amostra
+```
+Gerando uma amostra de um conjunto de dados
+```{r}
+amostra = sample(c(0,1), 150, replace = T, prob = c(0.7,0.3))
+summary(as.factor(amostra))
+```
+
+```{r}
+# aqui eu irei pegar os resultados gerados aleatórios para pegar os dados de algum banco de dados
+amostrairis = iris[amostra==1,]
+amostrairis
+dim(amostrairis) # verificando as dimensões da amostra
+
+```
+```{r}
+# repetindo um experimento
+set.seed(2345)
+sample(c(1000), 1)
+```
+
+```{r}
+# aqui eu vou apenas repetir ali em cima para mostrar que os elementos se repetem por causa da semente
+set.seed(2345) # esse comando tem que ser executado e o próximo já tem que ser para gerar os dados
+sample(c(1000), 1)
+```
+

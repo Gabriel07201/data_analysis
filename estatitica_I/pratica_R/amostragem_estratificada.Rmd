@@ -1,0 +1,28 @@
+```{r}
+library("sampling")
+```
+
+```{r}
+proporcao = 25
+amostrairis2 = strata(data = iris, stratanames = c("Species"), size = c(rep(proporcao,3)), method = "srswor") # gerando uma amostragem do data frame iris, pegando os dados das especies, o size é para dizermos a quantidade e o 3 é quantas vezes vamos fazer isso e o método existem vários.
+# srswor amostra simples sem reposição; srswr com reposição; poisson; systematic
+```
+
+```{r}
+summary(amostrairis2) # aqui podemos ver que conseguimos uma amostra balanceada para cada espécie
+```
+
+```{r}
+infert
+summary(infert)
+```
+```{r}
+# criando uma amostragem dos dados infert
+amostra = strata(data = infert, stratanames = "education", size = c(5,48,47), method = "srswor") # gerando dados da mesma maneira que foi feito ali em cima, porém aqui passamos proporções diferentes para cada "tipo", já que eles contém mais ou menos dados.
+```
+
+```{r}
+amostra
+summary(amostra)
+```
+

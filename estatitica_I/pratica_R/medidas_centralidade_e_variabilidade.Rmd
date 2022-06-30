@@ -1,0 +1,32 @@
+```{r}
+jogadores = c(40000, 18000, 12000, 250000, 30000, 140000, 300000, 40000, 800000)
+
+```
+
+```{r}
+# média
+mean(jogadores)
+```
+```{r}
+# mediana
+median(jogadores)
+```
+```{r}
+# Quartis
+quartis = quantile(jogadores)
+quartis
+```
+
+```{r}
+# 3°Quartil
+quartis[4]
+```
+```{r}
+# desvio padrão
+sd(jogadores)
+```
+```{r}
+# resumo
+summary(jogadores)
+```
+

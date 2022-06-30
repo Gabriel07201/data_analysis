@@ -1,0 +1,15 @@
+```{r}
+library("TeachingSampling")
+```
+
+```{r}
+# amostra sistemática de tamanho 150, com 10 grupos
+amostra = S.SY(150, 10)
+amostra
+```
+
+```{r}
+amostrairis = iris[amostra,] # usando a amostra
+amostrairis
+```
+
